@@ -44,18 +44,15 @@ export class HomeComponent{
   getCafe() {
     let userLocation = new Place;
     let cafeLocation = new Place;
-    let userWeight = this.cs.getDistanceToRun(this.gewicht);
+    let dist = this.cs.getDistanceToRun(this.gewicht);
 
     this.gs.getLocation().subscribe(
       data => {
         userLocation.long = data.coords.latitude;
         userLocation.lat = data.coords.longitude;
 
-        var dist = this.cs.getDistanceToRun(+userWeight);
-
 
         console.log(dist);
-        console.log(this.bs.getCafe(userLocation.long, userLocation.lat, dist));
         this.bs.getCafe(userLocation.long, userLocation.lat, dist).subscribe(
           res => {
             console.log("pint");
