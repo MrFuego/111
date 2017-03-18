@@ -11,10 +11,10 @@ export class ToiletService {
 	}
 
 	getToilets(): Observable<Toilet []> {
-		return this.http.get(toiletsUrl)
-						.map(res => res.json().coordinates)
-						.map(toilets => toilets.map(this.toToilet)
-						.catch(this.handleError);
+		return this.http.get(this.toiletsUrl)
+						.map(res => res.json().coordinates);
+						//.map(toilets => toilets.map(this.toToilet))
+						//.catch(this.handleError);
 	}
 
 	private toToilet(toilet): Toilet {
@@ -24,7 +24,7 @@ export class ToiletService {
 		}
 	}
 
-	private handleError(): Promise<any> {
+	private handleError(error: Response | any): Promise<any> {
 		console.error('[ToiletService] An error has occurred...');
 		return Promise.reject(error.message || error);
 	}
