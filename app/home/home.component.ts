@@ -55,10 +55,10 @@ export class HomeComponent{
         console.log(userLocation);
         this.bs.getCafe(userLocation.lat, userLocation.long, dist).subscribe(
           res => {
-            console.log("pint");
-            cafeLocation.lat = <number>res[0];
-            cafeLocation.long = <number>res[1];
-            let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.long, cafeLocation.lat);
+            console.log(res);
+            cafeLocation.lat =res.lat;
+            cafeLocation.long = res.long;
+            let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.lat, cafeLocation.long);
             window.open(url);
           }
         )
