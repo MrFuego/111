@@ -44,7 +44,7 @@ export class HomeComponent{
   getCafe() {
     let userLocation = new Place;
     let cafeLocation = new Place;
-    let dist = this.cs.getDistanceToRun(this.gewicht);
+    let dist = Math.floor(this.cs.getDistanceToRun(this.gewicht));
 
     this.gs.getLocation().subscribe(
       data => {
