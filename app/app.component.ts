@@ -34,6 +34,10 @@ export class AppComponent {
             this.userLocation.long = data.coords.longitude;
           }
       )
+
+      this.bs.getCafes().subscribe(beer => {
+        console.log(beer);
+      })
   }
   
   message = 'This is the sample message.';
