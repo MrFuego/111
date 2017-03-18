@@ -1,0 +1,15 @@
+@import "reset";
+
+$c_yellow1: #EEBA4F;
+$c_yellow2: #D19F38;
+
+$c_red1: #D21717;
+
+.app-header {
+  background-color: $c_yellow1;
+  background-image: url('../img/header.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 500px;
+}
