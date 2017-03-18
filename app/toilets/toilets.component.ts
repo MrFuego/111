@@ -9,7 +9,9 @@ import { Toilet } from '../shared/models/toilet';
     `]
 })
 export class ToiletComponent implements OnInit {
-    constructor() { }
+constructor(private ts: ToiletService) {
+ts.getToilet(3.7174, 51.0543).subscribe(data => { console.log(data) });
+}
 
     ngOnInit() { }
 }

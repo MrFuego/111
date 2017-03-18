@@ -18,16 +18,37 @@ import { Place } from './shared/models/place';
 })
 export class AppComponent {
 
-  userLocation: Place;
-
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
-              private ts: ToiletService ) { }
+              private ts: ToiletService )
+  {
+	this.getToilet();
+  }
   
   message = 'This is the sample message.';
 
+  getToilet() {
+  	let userLocation = new Place;
+	  let toiletLocation = new Place;
+  
+  	this.gs.getLocation().subscribe(
+      data => {
+        userLocation.lat = data.coords.latitude;
+	    userLocation.long = data.coords.longitude;
+
+	    this.ts.getToilet(userLocation.lat, userLocation.long).subscribe(
+		  res => {
+		    toiletLocation.lat = <number> res[0];
+			toiletLocation.long = <number> res[1];
+			console.log(toiletLocation);
+		  }
+		)
+      }
+    )
+  }
+
   createUrl(latFrom:number, lonFrom:number, latTo:number, lonTo:number) {
-      return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
+    return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
   }
 }
