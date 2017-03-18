@@ -3,6 +3,7 @@ import { BeerService } from './shared/services/beer.service';
 import { CalculationService } from './shared/services/calculation.service';
 import { GeolocationService } from './shared/services/geolocation.service';
 import { ToiletService } from './shared/services/toilet.service';
+import { Place } from './shared/models/place';
 
 @Component({
   selector: 'my-app',
@@ -17,6 +18,8 @@ import { ToiletService } from './shared/services/toilet.service';
 })
 export class AppComponent {
 
+  userLocation: Place;
+
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
@@ -26,6 +29,9 @@ export class AppComponent {
           data => {
             console.log('lat: ' + data.coords.latitude);
             console.log('lon: ' + data.coords.longitude);
+            this.userLocation = new Place;
+            this.userLocation.lat = data.coords.latitude;
+            this.userLocation.long = data.coords.longitude;
           }
       )
   }
