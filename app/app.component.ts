@@ -23,18 +23,11 @@ export class AppComponent {
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
-              private ts: ToiletService )
-  {
-      this.gs.getLocation().subscribe(
-          data => {
-            console.log('lat: ' + data.coords.latitude);
-            console.log('lon: ' + data.coords.longitude);
-            this.userLocation = new Place;
-            this.userLocation.lat = data.coords.latitude;
-            this.userLocation.long = data.coords.longitude;
-          }
-      )
-  }
+              private ts: ToiletService ) { }
   
   message = 'This is the sample message.';
+
+  createUrl(latFrom:number, lonFrom:number, latTo:number, lonTo:number) {
+      return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
+  }
 }
