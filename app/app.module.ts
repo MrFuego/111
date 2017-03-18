@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 
@@ -22,7 +23,8 @@ import 'rxjs/add/observable/throw';
 @NgModule({
   imports: [ 
     BrowserModule,
-    AppRouting
+    AppRouting,
+    HttpModule
    ],
   declarations: [ 
     AppComponent,
