@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+import { Place } from '../models/place';
+
 @Injectable()
 export class BeerService {
     private placesUrl: string = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.0543420,3.7174240&radius=500&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU';
@@ -14,6 +16,7 @@ export class BeerService {
     getCafe(){
         return this.http.get(this.placesUrl)
             .map(res => res.json().results)
+            .map(this.toPlace)
             .catch(this.handleError);
     }
 
@@ -32,5 +35,17 @@ export class BeerService {
         }
 
         return Observable.throw(errMessage);
+    }
+
+    /**
+     * Convert user info from the API to our standard/format
+     */
+    private toPlace(place): Place {
+        return {
+            lat: place.geometry.location.lat,
+            long: place.geometry.location.long,
+            name: place.geometry.name,
+            open: place.geometry.opening_hours.open_now,
+        }
     }
 }
