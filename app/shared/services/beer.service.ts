@@ -11,12 +11,30 @@ export class BeerService {
     constructor(private http: Http) { }
 
     /**
-     * Get a cafe withing given radius
+     * Get all cafes
+     * 
+     * @param curLang 
+     * @param curLong 
+     * @param distance 
      */
     getCafes(curLang: number, curLong: number, distance: number): Observable<Place[]> {
         return this.http.get(this.baseUrl + `location=${curLang},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU`)
             .map(res => res.json().results)
             .map(places => places.map(this.toPlace))
+            .catch(this.handleError);
+    }
+
+    /**
+     * Get cafe
+     * 
+     * @param curLang
+     * @param curLong 
+     * @param distance 
+     */
+    getCafe(curLang: number, curLong: number, distance: number): Observable<Place> {
+        return this.http.get(this.baseUrl + `location=${curLang},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU&results=1`)
+            .map(res => res.json().results[0])
+            .map(this.toPlace)
             .catch(this.handleError);
     }
 
@@ -43,7 +61,7 @@ export class BeerService {
     private toPlace(place): Place {
         return {
             lat: place.geometry.location.lat,
-            long: place.geometry.location.long,
+            long: place.geometry.location.lng,
             name: place.name,
         }
     }

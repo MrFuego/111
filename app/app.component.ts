@@ -24,6 +24,12 @@ export class AppComponent {
               private ts: ToiletService )
   {
 	this.getToilet();
+
+  bs.getCafe(51.0543420,3.7174240,300)
+    .subscribe(data => {
+      console.log("beer");
+      console.log(data);
+    });
   }
   
   message = 'This is the sample message.';
