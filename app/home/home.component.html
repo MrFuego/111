@@ -14,10 +14,10 @@
         <form>
           <div class="form-component__input">
             <label>Gewicht</label>
-            <input type="number" id="zwaargewicht" name="gewicht" placeholder="hoe veel weeg je?" />
+            <input type="number" name="gewicht" placeholder="hoe veel weeg je?" [(ngModel)]="gewicht" />
           </div>
           <div class="form-component__button">
-            <a (click)="getCafe()" class="button button--white" role="button">Recht naar jouw pintje</a>
+            <a  (click)="getCafe()"  class="button button--white" role="button">Recht naar jouw pintje</a>
           </div>
         </form>
       </div>

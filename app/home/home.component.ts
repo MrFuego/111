@@ -9,12 +9,15 @@ import { Place } from '../shared/models/place';
 @Component({
   templateUrl: './app/home/home.component.html',
 })
-export class HomeComponent {
-  constructor(private bs: BeerService,
-    private cs: CalculationService,
-    private gs: GeolocationService,
-    private ts: ToiletService) {
+export class HomeComponent{
+    public gewicht: number = 0;
+  constructor( private bs: BeerService,
+              private cs: CalculationService,
+              private gs: GeolocationService,
+              private ts: ToiletService )
+  {
   }
+
 
 
   getToilet() {
@@ -41,7 +44,7 @@ export class HomeComponent {
   getCafe() {
     let userLocation = new Place;
     let cafeLocation = new Place;
-    let userWeight = (<HTMLInputElement>document.getElementById('zwaargewicht')).value;
+    let userWeight = this.cs.getDistanceToRun(this.gewicht);
 
     this.gs.getLocation().subscribe(
       data => {

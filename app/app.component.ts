@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import { BeerService } from './shared/services/beer.service';
-import { CalculationService } from './shared/services/calculation.service';
-import { GeolocationService } from './shared/services/geolocation.service';
-import { ToiletService } from './shared/services/toilet.service';
-import { Place } from './shared/models/place';
 
 @Component({
   selector: 'my-app',
@@ -18,6 +13,8 @@ import { Place } from './shared/models/place';
 })
 export class AppComponent {
 
+<<<<<<< HEAD
+=======
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
@@ -48,4 +45,5 @@ export class AppComponent {
   createUrl(latFrom:number, lonFrom:number, latTo:number, lonTo:number) {
     return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
   }
+>>>>>>> 7942b6358885653c9b971382e3d0c897b920483a
 }
