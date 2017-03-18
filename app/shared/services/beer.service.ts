@@ -31,8 +31,8 @@ export class BeerService {
      * @param curLong 
      * @param distance 
      */
-    getCafe(curLang: number, curLong: number, distance: number): Observable<Place> {
-        return this.http.get(this.baseUrl + `location=${curLang},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU&results=1`)
+    getCafe(curLat: number, curLong: number, distance: number): Observable<Place> {
+        return this.http.get(this.baseUrl + `location=${curLat},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU&results=1`)
             .map(res => res.json().results[0])
             .map(this.toPlace)
             .catch(this.handleError);

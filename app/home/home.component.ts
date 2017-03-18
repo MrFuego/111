@@ -48,18 +48,18 @@ export class HomeComponent{
 
     this.gs.getLocation().subscribe(
       data => {
-        userLocation.long = data.coords.latitude;
-        userLocation.lat = data.coords.longitude;
+        userLocation.lat = data.coords.latitude;
+        userLocation.long = data.coords.longitude;
 
 
-        console.log(dist);
-        this.bs.getCafe(userLocation.long, userLocation.lat, dist).subscribe(
+        console.log(userLocation);
+        this.bs.getCafe(userLocation.lat, userLocation.long, dist).subscribe(
           res => {
             console.log("pint");
-            // cafeLocation.lat = <number>res[0];
-            // cafeLocation.long = <number>res[1];
-            // let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.long, cafeLocation.lat);
-            // window.open(url);
+            cafeLocation.lat = <number>res[0];
+            cafeLocation.long = <number>res[1];
+            let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.long, cafeLocation.lat);
+            window.open(url);
           }
         )
       }
