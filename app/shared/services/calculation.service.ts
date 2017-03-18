@@ -20,7 +20,7 @@ export class CalculationService{
      */
 
     getDistanceToRun(gewicht: number){
-        let minuten = 111*200*(24.5 * gewicht);
+        let minuten = 111*200/(24.5 * gewicht);
         let afstand = minuten * 150
         return afstand;
     }
