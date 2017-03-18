@@ -23,7 +23,6 @@ export class AppComponent {
               private gs: GeolocationService,
               private ts: ToiletService )
   {
-	this.getToilet();
   }
   
   message = 'This is the sample message.';

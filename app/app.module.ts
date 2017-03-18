@@ -7,7 +7,6 @@ import { AppRouting } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { CountdownComponent } from './home/countdown.component';
 import { ToiletComponent } from './toilets/toilets.component';
-import { UitlegComponent } from './uitleg/uitleg.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { CalculationService } from './shared/services/calculation.service';
@@ -32,7 +31,6 @@ import 'rxjs/add/observable/throw';
     HomeComponent,
     CountdownComponent,
     ToiletComponent,
-    UitlegComponent,
     NotFoundComponent
     ],
   providers: [
