@@ -27,9 +27,10 @@ export class AppComponent {
   }
   
   message = 'This is the sample message.';
+
   getToilet() {
   	let userLocation = new Place;
-	let toiletLocation = new Place;
+	  let toiletLocation = new Place;
   
   	this.gs.getLocation().subscribe(
       data => {
@@ -45,5 +46,9 @@ export class AppComponent {
 		)
       }
     )
+  }
+
+  createUrl(latFrom:number, lonFrom:number, latTo:number, lonTo:number) {
+    return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
   }
 }
