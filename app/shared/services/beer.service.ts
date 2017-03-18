@@ -6,15 +6,15 @@ import { Place } from '../models/place';
 
 @Injectable()
 export class BeerService {
-    private placesUrl: string = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.0543420,3.7174240&radius=500&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU';
+    private baseUrl: string = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
 
     constructor(private http: Http) { }
 
     /**
      * Get a cafe withing given radius
      */
-    getCafes(): Observable<Place[]> {
-        return this.http.get(this.placesUrl)
+    getCafes(curLang: number, curLong: number, distance: number): Observable<Place[]> {
+        return this.http.get(this.baseUrl + `location=${curLang},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU`)
             .map(res => res.json().results)
             .map(places => places.map(this.toPlace))
             .catch(this.handleError);
