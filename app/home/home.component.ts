@@ -48,8 +48,8 @@ export class HomeComponent{
 
     this.gs.getLocation().subscribe(
       data => {
-        userLocation.lat = data.coords.latitude;
-        userLocation.long = data.coords.longitude;
+        userLocation.long = data.coords.latitude;
+        userLocation.lat = data.coords.longitude;
 
         var dist = this.cs.getDistanceToRun(+userWeight);
 
