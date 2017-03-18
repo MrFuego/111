@@ -1,38 +1,32 @@
-111
+Beeldbank - SIP
 ==================================
 
-## Info
-- Contributors: Matthias Seghers, Pieter Van Molle, Shaun Janssens, Stijn Meerschaert & Jef Roosens
+## Info
 
-- Event: Apps for Ghent/Abs for Ghent
+- Contributors: **Matthias Seghers, Pieter Van Molle, Shaun Janssens, Stijn Meerschaert & Jef Roosens**
+- Event: **Apps for Ghent/Abs for Ghent**
+- Date: **March 18th 2017**
 
-- Date: March 18th 2017
+## Deploy
 
-## Deploy
-### Clone
-
-```
-
-$ git clone https://github.com/matthiasseghers/111.git
+### Clone
 
 ```
-
-### Install
+$ git clone https://github.com/matthiasseghers/111.git
 ```
 
-$ cd ~/111/
+### Install
 
+```
+$ cd ~/111/
 ```
 
 ```
-
-$ npm install
-
+$ npm install
 ```
 
-### Start
+### Start
+
 ```
-
-$ npm start
-
+$ npm start
 ```
