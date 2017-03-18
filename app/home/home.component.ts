@@ -10,13 +10,21 @@ import { Place } from '../shared/models/place';
     templateUrl: './app/home/home.component.html',
 })
 export class HomeComponent{
+    public gewicht: number = 0;
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
               private ts: ToiletService )
   {
   }
+
+
+
   
+  getGewicht(){
+      console.log(this.gewicht)
+      console.log(this.cs.getDistanceToRun(this.gewicht))
+  }
 
   getToilet() {
   	let userLocation = new Place;
