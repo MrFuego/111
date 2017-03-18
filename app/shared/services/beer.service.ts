@@ -13,10 +13,10 @@ export class BeerService {
     /**
      * Get a cafe withing given radius
      */
-    getCafe(){
+    getCafes(): Observable<Place[]> {
         return this.http.get(this.placesUrl)
             .map(res => res.json().results)
-            .map(this.toPlace)
+            .map(places => places.map(this.toPlace))
             .catch(this.handleError);
     }
 
@@ -44,8 +44,7 @@ export class BeerService {
         return {
             lat: place.geometry.location.lat,
             long: place.geometry.location.long,
-            name: place.geometry.name,
-            open: place.geometry.opening_hours.open_now,
+            name: place.name,
         }
     }
 }
