@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="apple-touch-startup-image" href="/launch.png">
+    <meta name="apple-mobile-web-app-title" content="Bierun">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <title>Bierun</title>
+
+    <!-- needed for angular 2 routing -->
+    <base href="/">
+
+    <!-- css -->
+    <!-- own css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- js -->
+    <!-- load polyfills and angular dependencies -->
+    <!--<script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/reflect-metadata/Reflect.js"></script>-->
+
+    <!-- load our angular app with systemjs -->
+    <!--<script src="../node_modules/systemjs/dist/system.src.js"></script>-->
+    <script>
+        System.import('app').catch(function(err) { console.error(err); });
+    </script>
+</head>
+<body>
+
+    <my-app></my-app>
+    
+</body>
+</html>
