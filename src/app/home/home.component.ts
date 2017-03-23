@@ -56,7 +56,6 @@ export class HomeComponent{
           res => {
             cafeLocation.lat = <number>res.lat;
             cafeLocation.long = <number>res.long;
-            console.log(cafeLocation);
             let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.lat, cafeLocation.long);
             window.location.href= url;
           }
