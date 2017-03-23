@@ -10,15 +10,13 @@ import { Place } from '../shared/models/place';
   templateUrl: 'home.component.html',
 })
 export class HomeComponent{
-    public gewicht: number = 0;
+  public gewicht: number = null;
   constructor( private bs: BeerService,
               private cs: CalculationService,
               private gs: GeolocationService,
               private ts: ToiletService )
   {
   }
-
-
 
   getToilet() {
     let userLocation = new Place;
@@ -34,7 +32,7 @@ export class HomeComponent{
             toiletLocation.lat = <number>res[0];
             toiletLocation.long = <number>res[1];
             let url = this.createUrl(userLocation.lat, userLocation.long, toiletLocation.long, toiletLocation.lat);
-            window.open(url);
+            window.location.href= url;
           }
         )
       }
@@ -51,16 +49,16 @@ export class HomeComponent{
         userLocation.lat = data.coords.latitude;
         userLocation.long = data.coords.longitude;
 
-        console.log(userLocation.lat);
+        console.log(userLocation.lat, userLocation.long);
         console.log(dist);
 
         this.bs.getCafe(userLocation.lat, userLocation.long, dist).subscribe(
           res => {
-            console.log(res)
             cafeLocation.lat = <number>res.lat;
             cafeLocation.long = <number>res.long;
+            console.log(cafeLocation);
             let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.lat, cafeLocation.long);
-            window.open(url);
+            window.location.href= url;
           }
         )
       }
@@ -68,6 +66,7 @@ export class HomeComponent{
   }
 
   createUrl(latFrom: number, lonFrom: number, latTo: number, lonTo: number) {
-    return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
+    //return `https://www.google.com/maps/dir/${latFrom},${lonFrom}/${latTo},${lonTo}/data=!4m2!4m1!3e2`;
+    return `http://maps.google.com/?saddr=${latFrom},${lonFrom}&daddr=${latTo},${lonTo}`;
   }
 }

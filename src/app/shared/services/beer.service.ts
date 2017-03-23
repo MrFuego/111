@@ -34,9 +34,9 @@ export class BeerService {
      * @param curLong 
      * @param distance 
      */
-    getCafe(curLat: number, curLong: number, distance: number): Observable<Place> {
+    getCafe(curLat, curLong, distance): Observable<Place> {
         return this.http.get(this.baseUrl + `location%3D${curLat}%2C${curLong}%26radius%3D${distance}%26type%3Dcafe%26key%3DAIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU%22&format=json&diagnostics=true&callback=`)
-            .map(res => res.json().query.results.json.results)
+            .map(res => res.json().query.results.json.results[0])
             .map(this.toPlace)
             .catch(this.handleError);
     }
@@ -65,7 +65,7 @@ export class BeerService {
         return {
             lat: place.geometry.location.lat,
             long: place.geometry.location.lng,
-            name: place.name,
+            name: place.name
         }
     }
 }
