@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
+import { JsonpModule } from '@angular/http';
 
 import { HomeComponent } from './home/home.component';
 import { CountdownComponent } from './home/countdown.component';
@@ -26,7 +27,8 @@ import 'rxjs/add/observable/throw';
     BrowserModule,
     AppRouting,
     HttpModule,
-    FormsModule
+    FormsModule,
+    JsonpModule
    ],
   declarations: [ 
     AppComponent,

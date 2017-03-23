@@ -51,13 +51,14 @@ export class HomeComponent{
         userLocation.lat = data.coords.latitude;
         userLocation.long = data.coords.longitude;
 
+        console.log(userLocation.lat);
+        console.log(dist);
 
-        console.log(userLocation);
         this.bs.getCafe(userLocation.lat, userLocation.long, dist).subscribe(
           res => {
-            console.log(res);
-            cafeLocation.lat =res.lat;
-            cafeLocation.long = res.long;
+            console.log(res)
+            cafeLocation.lat = <number>res.lat;
+            cafeLocation.long = <number>res.long;
             let url = this.createUrl(userLocation.lat, userLocation.long, cafeLocation.lat, cafeLocation.long);
             window.open(url);
           }

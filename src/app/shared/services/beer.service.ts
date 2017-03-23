@@ -6,9 +6,11 @@ import { Place } from '../models/place';
 
 @Injectable()
 export class BeerService {
-    private baseUrl: string = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
+    private baseUrl: string = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22https%3A%2F%2Fmaps.googleapis.com%2Fmaps%2Fapi%2Fplace%2Fnearbysearch%2Fjson%3F';
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http
+        ) { }
 
     /**
      * Get all cafes
@@ -18,11 +20,12 @@ export class BeerService {
      * @param distance 
      */
     getCafes(curLang: number, curLong: number, distance: number): Observable<Place[]> {
-        return this.http.get(this.baseUrl + `location=${curLang},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU`)
-            .map(res => res.json().results)
+        return this.http.get(this.baseUrl + `location%3D${curLang}%2C${curLong}%26radius%3D${distance}%26type%3Dcafe%26key%3DAIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU%22&format=json&diagnostics=true&callback=`)
+            .map(res => res.json().query.results.json.results)
             .map(places => places.map(this.toPlace))
             .catch(this.handleError);
     }
+
 
     /**
      * Get cafe
@@ -32,8 +35,8 @@ export class BeerService {
      * @param distance 
      */
     getCafe(curLat: number, curLong: number, distance: number): Observable<Place> {
-        return this.http.get(this.baseUrl + `location=${curLat},${curLong}&radius=${distance}&type=cafe&key=AIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU&results=1`)
-            .map(res => res.json().results[0])
+        return this.http.get(this.baseUrl + `location%3D${curLat}%2C${curLong}%26radius%3D${distance}%26type%3Dcafe%26key%3DAIzaSyBopo3aqTx8sfurrX8bIhZJ2zzR6-jBEcU%22&format=json&diagnostics=true&callback=`)
+            .map(res => res.json().query.results.json.results)
             .map(this.toPlace)
             .catch(this.handleError);
     }
